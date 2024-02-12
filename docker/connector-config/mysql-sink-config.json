@@ -1,0 +1,16 @@
+{
+    "name": "edge-mysql-source-test",
+    "config": {
+        "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
+        "connection.url": "jdbc:mysql://host.docker.internal:3306/aas_db_test?serverTimezone=Asia/Seoul&useSSL=false",
+        "connection.user": "root",
+        "connection.password": "0000",
+        "connection.attempts": "3",
+        "table.whitelist": "property",
+        "mode": "timestamp+incrementing",
+        "incrementing.column.name": "id",
+        "timestamp.column.name": "timestamp",
+        "topic.prefix": "edge-mysql-source-",
+        "tasks.max": "1"
+    }
+}
