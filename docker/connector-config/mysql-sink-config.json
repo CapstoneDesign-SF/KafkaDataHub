@@ -1,16 +1,21 @@
 {
-    "name": "edge-mysql-source-test",
+    "name": "cloud-mysql-sink-test",
     "config": {
-        "connector.class": "io.confluent.connect.jdbc.JdbcSourceConnector",
-        "connection.url": "jdbc:mysql://host.docker.internal:3306/aas_db_test?serverTimezone=Asia/Seoul&useSSL=false",
-        "connection.user": "root",
-        "connection.password": "0000",
+        "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+        "connection.url": "jdbc:mysql://aas-database.cjhnbi27czq0.ap-northeast-2.rds.amazonaws.com/aas_db_test?serverTimezone=Asia/Seoul&useSSL=false",
+        "connection.user": "admin",
+        "connection.password": "whdgkqtjfrP",
         "connection.attempts": "3",
-        "table.whitelist": "property",
-        "mode": "timestamp+incrementing",
-        "incrementing.column.name": "id",
-        "timestamp.column.name": "timestamp",
-        "topic.prefix": "edge-mysql-source-",
-        "tasks.max": "1"
+        "insert.mode": "insert",
+        "table.name.format": "property_log",
+        "fields.whitelist": "submodel_id,id_short_path,category,id_short,value_type,value,model_type,timestamp",
+        "db.timezone": "Asia/Seoul",
+        "topics": "edge-mysql-source-property",
+        "auto.create": "false",
+        "auto.evolve": "false",
+        "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "key.converter.schemas.enable": "true",
+        "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+        "value.converter.schemas.enable": "true"
     }
 }
