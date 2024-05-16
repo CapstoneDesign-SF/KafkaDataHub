@@ -41,7 +41,8 @@ services:
       SCHEMA_REGISTRY_KAFKASTORE_TOPIC: _schemas
   
   kafka-connect:
-    image: pmj6823/kafka-connect-with-connector-jdbc:0.1
+    # image: pmj6823/kafka-connect-with-connector-jdbc:0.1
+    image: cscd2324sf/kafka-connect-with-plugins:0.1
     container_name: kafka-connect
     hostname: kafka-connect
     ports:
