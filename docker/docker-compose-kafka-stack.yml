@@ -13,6 +13,7 @@ services:
     #     condition: service_healthy
     #   kafka-3:
     #     condition: service_healthy
+    restart: always
     environment:
       KAFKA_REST_LISTENERS: http://0.0.0.0:8082/
       KAFKA_REST_HOST_NAME: kafka-rest-proxy
@@ -31,6 +32,7 @@ services:
     #     condition: service_healthy
     #   kafka-3:
     #     condition: service_healthy
+    restart: always
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka-1:9092,PLAINTEXT://kafka-2:9092,PLAINTEXT://kafka-3:9092
       SCHEMA_REGISTRY_KAFKASTORE_SECURITY_PROTOCOL: PLAINTEXT
@@ -49,6 +51,7 @@ services:
       - 8083:8083
     depends_on:
       - schema-registry
+    restart: always
     #   - kafka-1:
     #     condition: service_healthy
     #   - kafka-2:
